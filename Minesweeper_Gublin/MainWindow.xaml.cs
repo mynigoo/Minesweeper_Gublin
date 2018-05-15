@@ -23,16 +23,16 @@ namespace Minesweeper_Gublin
         public MainWindow()
         {
             InitializeComponent();
-            var myGameSettings = new GameSettings();
+            var myMinefield = new Minefield();
 
-            myGameSettings.NumCols = 9;
-            myGameSettings.NumRows = 9;
+            //myMinefield.NumCols = 9;
+            //myMinefield.NumRows = 9;
 
-            MainUniformGrid.Rows = myGameSettings.NumRows;
-            MainUniformGrid.Columns = myGameSettings.NumCols;
+            MainUniformGrid.Rows = myMinefield.NumRows;
+            MainUniformGrid.Columns = myMinefield.NumCols;
 
-            for (int i = 0; i < myGameSettings.NumCols; i++)
-                for (int j = 0; j < myGameSettings.NumRows; j++)
+            for (int i = 0; i < myMinefield.NumCols; i++)
+                for (int j = 0; j < myMinefield.NumRows; j++)
                 {
                     Button btn = new Button();
                     btn.Content = i.ToString() + " " + j.ToString();
