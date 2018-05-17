@@ -8,21 +8,23 @@
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525" ResizeMode="CanResizeWithGrip" SizeToContent="WidthAndHeight" ScrollViewer.CanContentScroll="True">
-        <Window.Resources>
-            <local:Minefield x:Key="myMinefield" />
-        </Window.Resources>
-    <UniformGrid x:Name="MainUniformGrid"
-                 
-                 Background="#FFAFBCEA" 
-                 DataContext="{StaticResource myMinefield}"
-                 Columns="{Binding NumCols}"
-                 Rows="1">
-        <ItemsControl x:Name="itemsControl" ItemsSource="{Binding myCell}"    >
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Button  Margin="5,2,10,2"  Height="25" Content="{Binding Coord}"   />
+    <Window.Resources>
+        <local:Minefield x:Key="myMinefield" />
+    </Window.Resources>
+    <Grid x:Name="MainGrid"
+          Background="#FFAFBCEA"
+          DataContext="{StaticResource myMinefield}">
+        <ItemsControl x:Name="itemsControl"   ItemsSource="{Binding myCell}"   >
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate >
+                <DataTemplate >
+                    <Button  Margin="0,0,0,0"  Height="25"  Width="25" Content="{Binding Coord}"   />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-    </UniformGrid>
+    </Grid>
 </Window>

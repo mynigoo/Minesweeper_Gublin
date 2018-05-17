@@ -49,12 +49,15 @@ namespace Minesweeper_Gublin
                     myCell[NumCols * y + x].isBomb = true;
                 else i--;
             }
+
+
+            /*
             CellList = new List<Cell>();
             CellList.Add(new Cell(1, 1));
             CellList.Add(new Cell(2, 3));
-            CellList.Add(new Cell(3, 1));
-            ObservableCollection<List<Cell>> collection = new ObservableCollection<List<Cell>>();
-            collection.Add(CellList);
+            CellList.Add(new Cell(3, 1));*/
+            //ObservableCollection<List<Cell>> collection = new ObservableCollection<List<Cell>>();
+            //collection.Add(CellList);
             
             //ObservableCollection<Cell[,]> collection = new ObservableCollection<Cell[,]>();
             //ObservableCollection<List<double>> collection = new ObservableCollection<List<double>>();

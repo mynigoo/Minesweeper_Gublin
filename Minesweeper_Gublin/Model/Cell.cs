@@ -8,8 +8,8 @@ namespace Minesweeper_Gublin
 {
     public class Cell
     {
-        int x;
-        int y;
+        public int x { get; set; }
+        public int y { get; set; }
         public bool isBomb { get; set; }
         public string Coord { get; set; }
         public Cell(int x, int y)
