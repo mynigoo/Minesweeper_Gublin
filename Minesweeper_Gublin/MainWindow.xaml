@@ -1,0 +1,26 @@
+﻿<Window x:Name="MainWindow1"  x:Class="Minesweeper_Gublin.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Minesweeper_Gublin"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" ResizeMode="CanResizeWithGrip" SizeToContent="WidthAndHeight">
+        <Window.Resources>
+            <local:Minefield x:Key="myMinefield" />
+        </Window.Resources>
+    <UniformGrid x:Name="MainUniformGrid" Rows="1" Columns="1" Background="#FFAFBCEA" 
+                  DataContext="{StaticResource myMinefield}"  >
+        <ItemsControl x:Name="itemsControl" ItemsSource="{Binding myCell}"    >
+
+            <ItemsControl.ItemTemplate      >
+                <DataTemplate >
+                    <Button  Margin="5,2,10,2"  Height="25" Content="{Binding DataContext/Coord}"  />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+
+        </ItemsControl>
+    </UniformGrid>
+
+</Window>

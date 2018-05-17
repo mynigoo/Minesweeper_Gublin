@@ -27,7 +27,7 @@ namespace Minesweeper_Gublin
 
             //myMinefield.NumCols = 9;
             //myMinefield.NumRows = 9;
-
+/*
             MainUniformGrid.Rows = myMinefield.NumRows;
             MainUniformGrid.Columns = myMinefield.NumCols;
 
@@ -45,6 +45,7 @@ namespace Minesweeper_Gublin
                     //MainUniformGrid.Children.Add(new Button()); Background = new SolidColorBrush(Colors.Red);
                     //this.AddChild(new Button());
                 }
+            */
         }
     }
 }
