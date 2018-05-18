@@ -14,15 +14,15 @@
     <Grid x:Name="MainGrid"
           Background="#FFAFBCEA"
           DataContext="{StaticResource myMinefield}">
-        <ItemsControl x:Name="itemsControl"   ItemsSource="{Binding myCell}"   >
+        <ItemsControl x:Name="itemsControl" ItemsSource="{Binding myCell}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate >
-                <DataTemplate >
-                    <Button  Margin="0,0,0,0"  Height="25"  Width="25" Content="{Binding Coord}"   />
+                <DataTemplate>
+                    <Button Margin="0,0,0,0" Height="25" Width="25" Content="{Binding Coord}" Background="{Binding BackgroundColor}"   />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

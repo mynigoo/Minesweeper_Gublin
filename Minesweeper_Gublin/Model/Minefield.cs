@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace Minesweeper_Gublin
 {
@@ -46,7 +47,11 @@ namespace Minesweeper_Gublin
                 int x = r.Next(0, NumCols - 1);
                 int y = r.Next(0, NumRows - 1);
                 if (myCell[NumCols * y + x].isBomb != true)
+                {
                     myCell[NumCols * y + x].isBomb = true;
+                    myCell[NumCols * y + x].BackgroundColor = new SolidColorBrush(Colors.Red);
+                    myCell[NumCols * y + x].Coord = "!!!";
+                }
                 else i--;
             }
 
