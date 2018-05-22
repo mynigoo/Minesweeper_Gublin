@@ -18,6 +18,8 @@ namespace Minesweeper_Gublin
         public Cell(int x, int y)
         {
             Coord = x.ToString() + " " + y.ToString();
+            this.x = x;
+            this.y = y;
             BackgroundColor = new SolidColorBrush(Colors.Green);
         }
     }

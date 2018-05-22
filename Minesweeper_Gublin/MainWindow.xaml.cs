@@ -20,6 +20,7 @@ namespace Minesweeper_Gublin
     /// </summary>
     public partial class MainWindow : Window
     {
+        //public Minefield myMinefield { get; set; }
         public MainWindow()
         {
             InitializeComponent();
@@ -46,6 +47,27 @@ namespace Minesweeper_Gublin
                     //this.AddChild(new Button());
                 }
             */
+        }
+
+        private void Button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var element = (Button)e.Source;
+
+            int c = Grid.GetColumn(element);
+            int r = Grid.GetRow(element);
+            element.Content = c.ToString() + "_" + r.ToString();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var b_element = (Button)e.Source;
+            Button clickedButton = (Button)sender;
+            int y = ((Cell)clickedButton.DataContext).y;
+            int x = ((Cell)clickedButton.DataContext).x;
+            var curGrid = MainGrid.DataContext;
+            //int c = itemsControl.Items.CurrentPosition;// IndexOf(sender);
+            //var r = "#";// mainUniformGrid.GetRow(element);
+            b_element.Content = x.ToString() + "#" + y.ToString();
         }
     }
 }

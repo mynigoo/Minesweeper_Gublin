@@ -17,12 +17,12 @@
         <ItemsControl x:Name="itemsControl" ItemsSource="{Binding myCell}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid />
+                    <UniformGrid x:Name="mainUniformGrid" />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate >
                 <DataTemplate>
-                    <Button Margin="0,0,0,0" Height="25" Width="25" Content="{Binding Coord}" Background="{Binding BackgroundColor}"   />
+                    <Button Margin="0,0,0,0" Height="25" Width="25" Content="{Binding Coord}" Background="{Binding BackgroundColor}" MouseLeftButtonDown="Button_MouseLeftButtonDown" Click="Button_Click"   />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
