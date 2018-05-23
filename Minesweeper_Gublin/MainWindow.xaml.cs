@@ -62,16 +62,13 @@ namespace Minesweeper_Gublin
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var b_element = (Button)e.Source;
-            Button clickedButton = (Button)sender;
-            int y = ((Cell)clickedButton.DataContext).Y;
-            int x = ((Cell)clickedButton.DataContext).X;
+            //var b_element = (Button)e.Source;
+            Cell openedCell = (Cell)((Button)sender).DataContext;
+            int y = openedCell.Y;
+            int x = openedCell.X;
             var curGrid = MainGrid.DataContext;
-            //int c = itemsControl.Items.CurrentPosition;// IndexOf(sender);
-            //var r = "#";// mainUniformGrid.GetRow(element);
-            //var ch = this.DataContext.GetType();
-            b_element.Content = x.ToString() + "#" + y.ToString();
-            ((Minesweeper_Gublin.Minefield)this.MainGrid.DataContext).ChangeBackgroundColor(x, y, Colors.Aqua);
+            if (openedCell.isBomb) openedCell.Title = "!!!"; else openedCell.Title = openedCell.BombCount.ToString() ;
+            //((Minesweeper_Gublin.Minefield)this.MainGrid.DataContext).ChangeBackgroundColor(x, y, Colors.Aqua);
             //((Minesweeper_Gublin.Minefield)this.MainGrid.DataContext).ChangeColorOfMinedCell();
 
 

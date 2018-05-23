@@ -40,19 +40,7 @@ namespace Minesweeper_Gublin
                 for (int i = 0; i < NumCols; i++)
                     myCell[NumCols * j + i] = new Cell(i, j);
 
-            Random r = new Random();
-            for (int i = 0; i < NumBombs; i++)
-            {
-                int x = r.Next(0, NumCols - 1);
-                int y = r.Next(0, NumRows - 1);
-                if (myCell[NumCols * y + x].isBomb != true)
-                {
-                    myCell[NumCols * y + x].isBomb = true;
-                    //myCell[NumCols * y + x].BackgroundColor = new SolidColorBrush(Colors.Red);
-                    myCell[NumCols * y + x].Title = "!!!";
-                }
-                else i--;
-            }
+            Mining();
 
 
 
@@ -68,6 +56,24 @@ namespace Minesweeper_Gublin
             //ObservableCollection<List<double>> collection = new ObservableCollection<List<double>>();
         }
 
+        private void Mining()
+        {
+            Random r = new Random();
+            for (int i = 0; i < NumBombs; i++)
+            {
+                int x = r.Next(0, NumCols - 1);
+                int y = r.Next(0, NumRows - 1);
+                if (myCell[NumCols * y + x].isBomb != true)
+                {
+                    myCell[NumCols * y + x].isBomb = true;
+                    //myCell[NumCols * y + x].BackgroundColor = new SolidColorBrush(Colors.Red);
+                    //myCell[NumCols * y + x].Title = "!!!";
+                    foreach (var cellIndex in VicinityIndexes(x, y))
+                        myCell[cellIndex].BombCount++;
+                }
+                else i--;
+            }
+        }
 
         private List<int> VicinityIndexes(int x, int y)
         {
@@ -107,12 +113,7 @@ namespace Minesweeper_Gublin
                 myCell[i].BackgroundColor = new SolidColorBrush(Colors.Red);
         }
 
-        public void ChangeColorOfMinedCell()
-        {
-            foreach(var c in myCell )
-                if (c.isBomb) c.BackgroundColor = new SolidColorBrush(Colors.Red);
-
-        }
+ 
          
 
 

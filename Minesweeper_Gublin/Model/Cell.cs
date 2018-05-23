@@ -15,10 +15,23 @@ namespace Minesweeper_Gublin
 
         private int _y;
         public int Y { get; set; }
+        public int BombCount { get; set; }
         public bool isBomb { get; set; }
-        public string Title { get; set; }
 
-        protected const string BackGroundColorProperty = "BackgroundColor000";
+        private string _title;
+        public string Title
+        {
+            get { return _title; } 
+            set
+            {
+                if (_title != value)
+                {
+                    _title = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
         private SolidColorBrush _backgroundColor;
         public SolidColorBrush BackgroundColor
         {
@@ -34,7 +47,7 @@ namespace Minesweeper_Gublin
         }
         public Cell(int x, int y)
         {
-            Title = x.ToString() + " " + y.ToString();
+            //Title = x.ToString() + " " + y.ToString();
             this.X = x;
             this.Y = y;
             BackgroundColor = new SolidColorBrush(Colors.Green);
