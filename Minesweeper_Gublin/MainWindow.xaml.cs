@@ -20,9 +20,11 @@ namespace Minesweeper_Gublin
     /// </summary>
     public partial class MainWindow : Window
     {
+
         //public Minefield myMinefield { get; set; }
         public MainWindow()
         {
+
             InitializeComponent();
             var myMinefield = new Minefield();
 
@@ -62,12 +64,18 @@ namespace Minesweeper_Gublin
         {
             var b_element = (Button)e.Source;
             Button clickedButton = (Button)sender;
-            int y = ((Cell)clickedButton.DataContext).y;
-            int x = ((Cell)clickedButton.DataContext).x;
+            int y = ((Cell)clickedButton.DataContext).Y;
+            int x = ((Cell)clickedButton.DataContext).X;
             var curGrid = MainGrid.DataContext;
             //int c = itemsControl.Items.CurrentPosition;// IndexOf(sender);
             //var r = "#";// mainUniformGrid.GetRow(element);
+            //var ch = this.DataContext.GetType();
             b_element.Content = x.ToString() + "#" + y.ToString();
+            ((Minesweeper_Gublin.Minefield)this.MainGrid.DataContext).ChangeBackgroundColor(x, y, Colors.Aqua);
+            //((Minesweeper_Gublin.Minefield)this.MainGrid.DataContext).ChangeColorOfMinedCell();
+
+
+
         }
     }
 }
