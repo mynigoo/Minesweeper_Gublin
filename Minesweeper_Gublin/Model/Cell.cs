@@ -10,13 +10,18 @@ namespace Minesweeper_Gublin
 {
     public class Cell : ObservableObject
     {
-        private int _x;
         public int X { get; set; }
-
-        private int _y;
         public int Y { get; set; }
-        public int BombCount { get; set; }
+        public int BombQuantityAround { get; set; }
         public bool isBomb { get; set; }
+        public bool IsChecked { get; set; }
+
+        public void MarkCell()
+        {
+            if (!IsChecked)
+                if (Title != "#") Title = "#";
+                else Title = "";
+        }
 
         private string _title;
         public string Title
@@ -51,6 +56,22 @@ namespace Minesweeper_Gublin
             this.X = x;
             this.Y = y;
             BackgroundColor = new SolidColorBrush(Colors.Green);
+            IsChecked = false;
+        }
+
+        public void Open()
+        {
+            IsChecked = true;
+            if (isBomb)
+            {
+                BackgroundColor = new SolidColorBrush(Colors.Red);
+                Title = "Ж";
+            }
+            else
+            {
+                BackgroundColor = new SolidColorBrush(Colors.DarkKhaki);
+                Title = BombQuantityAround == 0 ? "" : BombQuantityAround.ToString();
+            }
         }
     }
 }

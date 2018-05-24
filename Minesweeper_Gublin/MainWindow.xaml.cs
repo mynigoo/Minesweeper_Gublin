@@ -51,28 +51,18 @@ namespace Minesweeper_Gublin
             */
         }
 
-        private void Button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            var element = (Button)e.Source;
-
-            int c = Grid.GetColumn(element);
-            int r = Grid.GetRow(element);
-            element.Content = c.ToString() + "_" + r.ToString();
-        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //var b_element = (Button)e.Source;
-            Cell openedCell = (Cell)((Button)sender).DataContext;
-            int y = openedCell.Y;
-            int x = openedCell.X;
-            var curGrid = MainGrid.DataContext;
-            if (openedCell.isBomb) openedCell.Title = "!!!"; else openedCell.Title = openedCell.BombCount.ToString() ;
-            //((Minesweeper_Gublin.Minefield)this.MainGrid.DataContext).ChangeBackgroundColor(x, y, Colors.Aqua);
-            //((Minesweeper_Gublin.Minefield)this.MainGrid.DataContext).ChangeColorOfMinedCell();
+            ((Minesweeper_Gublin.Minefield)this.MainGrid.DataContext)
+                .CellCheck(
+                (Cell)((Button)sender).DataContext
+                );
+        }
 
-
-
+        private void Button_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            ((Cell)((Button)sender).DataContext).MarkCell();
         }
     }
 }

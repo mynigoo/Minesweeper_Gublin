@@ -14,7 +14,7 @@
     <Grid x:Name="MainGrid"
           Background="#FFAFBCEA"
           DataContext="{StaticResource myMinefield}">
-        <ItemsControl x:Name="itemsControl" ItemsSource="{Binding myCell}">
+        <ItemsControl x:Name="itemsControl" ItemsSource="{Binding Cells}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid x:Name="mainUniformGrid" />
@@ -22,7 +22,7 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate >
                 <DataTemplate>
-                    <Button Margin="0,0,0,0" Height="25" Width="25" Content="{Binding Title}" Background="{Binding BackgroundColor}" MouseLeftButtonDown="Button_MouseLeftButtonDown" Click="Button_Click"   />
+                    <Button Margin="0,0,0,0" Height="25" Width="25" Content="{Binding Title}" Background="{Binding BackgroundColor}" Click="Button_Click" MouseRightButtonUp="Button_MouseRightButtonUp"   />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
