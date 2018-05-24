@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace Minesweeper_Gublin.ViewModel
 {
-    class PlayingAreaViewModel
+    class PlayGround : Minefield
     {
+
+    }
+
+    class CellViewModel : Cell
+    {
+        public CellViewModel(int x, int y) : base(x, y)
+        {
+        }
     }
 }

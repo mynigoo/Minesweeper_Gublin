@@ -13,15 +13,8 @@ namespace Minesweeper_Gublin
         public int X { get; set; }
         public int Y { get; set; }
         public int BombQuantityAround { get; set; }
-        public bool isBomb { get; set; }
+        public bool IsBomb { get; set; }
         public bool IsChecked { get; set; }
-
-        public void MarkCell()
-        {
-            if (!IsChecked)
-                if (Title != "#") Title = "#";
-                else Title = "";
-        }
 
         private string _title;
         public string Title
@@ -50,19 +43,26 @@ namespace Minesweeper_Gublin
                 }
             }
         }
+
         public Cell(int x, int y)
         {
-            //Title = x.ToString() + " " + y.ToString();
-            this.X = x;
-            this.Y = y;
+            X = x;
+            Y = y;
             BackgroundColor = new SolidColorBrush(Colors.Green);
             IsChecked = false;
+        }
+
+        public void MarkCell()
+        {
+            if (!IsChecked)
+                if (Title != "#") Title = "#";
+                else Title = "";
         }
 
         public void Open()
         {
             IsChecked = true;
-            if (isBomb)
+            if (IsBomb)
             {
                 BackgroundColor = new SolidColorBrush(Colors.Red);
                 Title = "Ж";
@@ -73,5 +73,8 @@ namespace Minesweeper_Gublin
                 Title = BombQuantityAround == 0 ? "" : BombQuantityAround.ToString();
             }
         }
+
+
+
     }
 }

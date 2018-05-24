@@ -37,9 +37,9 @@ namespace Minesweeper_Gublin
             {
                 int x = r.Next(0, NumCols - 1);
                 int y = r.Next(0, NumRows - 1);
-                if (Cells[NumCols * y + x].isBomb != true)
+                if (Cells[NumCols * y + x].IsBomb != true)
                 {
-                    Cells[NumCols * y + x].isBomb = true;
+                    Cells[NumCols * y + x].IsBomb = true;
                     foreach (var cellIndex in VicinityIndexes(x, y))
                         Cells[cellIndex].BombQuantityAround++;
                 }
@@ -77,12 +77,6 @@ namespace Minesweeper_Gublin
                        r.Add((y + 1) * NumCols + x + 1);
 
             return r;
-        }
-
-        public void ChangeBackgroundColor(int x, int y, Color c)
-        {
-            foreach (var i in VicinityIndexes(x, y))
-                Cells[i].BackgroundColor = new SolidColorBrush(Colors.Red);
         }
 
         public void CellCheck (Cell c)

@@ -21,36 +21,11 @@ namespace Minesweeper_Gublin
     public partial class MainWindow : Window
     {
 
-        //public Minefield myMinefield { get; set; }
         public MainWindow()
         {
-
             InitializeComponent();
             var myMinefield = new Minefield();
-
-            //myMinefield.NumCols = 9;
-            //myMinefield.NumRows = 9;
-/*
-            MainUniformGrid.Rows = myMinefield.NumRows;
-            MainUniformGrid.Columns = myMinefield.NumCols;
-
-            for (int i = 0; i < myMinefield.NumCols; i++)
-                for (int j = 0; j < myMinefield.NumRows; j++)
-                {
-                    Button btn = new Button();
-                    btn.Content = i.ToString() + " " + j.ToString();
-
-                    MainUniformGrid.Children.Add(btn);
-
-                    Grid.SetColumn(btn, i);
-                    Grid.SetRow(btn, j);
-
-                    //MainUniformGrid.Children.Add(new Button()); Background = new SolidColorBrush(Colors.Red);
-                    //this.AddChild(new Button());
-                }
-            */
         }
-
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -64,5 +39,6 @@ namespace Minesweeper_Gublin
         {
             ((Cell)((Button)sender).DataContext).MarkCell();
         }
+
     }
 }
