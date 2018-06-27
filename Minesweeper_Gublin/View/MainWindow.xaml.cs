@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Minesweeper_Gublin.ViewModel;
 
 namespace Minesweeper_Gublin
 {
@@ -29,7 +19,7 @@ namespace Minesweeper_Gublin
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ((Minesweeper_Gublin.Minefield)this.MainGrid.DataContext)
+            ((Minefield)this.MainGrid.DataContext)
                 .CellCheck(
                 (Cell)((Button)sender).DataContext
                 );

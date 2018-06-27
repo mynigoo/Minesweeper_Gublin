@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
 
-namespace Minesweeper_Gublin
+namespace Minesweeper_Gublin.ViewModel
 {
     public class Minefield
     {
@@ -84,7 +79,7 @@ namespace Minesweeper_Gublin
             c.Open();
             if (c.BombQuantityAround == 0)
                 foreach (var i in VicinityIndexes(c.X, c.Y))
-                    if (!Cells[i].IsChecked)
+                    if (Cells[i].State == CellStates.CLOSE)
                     {
                         Cells[i].Open();
                         CellCheck(Cells[i]);

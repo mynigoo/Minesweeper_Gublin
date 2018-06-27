@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
-using Minesweeper_Gublin.Helpers;
+﻿using Minesweeper_Gublin.Helpers;
 
-namespace Minesweeper_Gublin
+namespace Minesweeper_Gublin.ViewModel
 {
     public class Cell : ObservableObject
     {
@@ -14,20 +8,6 @@ namespace Minesweeper_Gublin
         public int Y { get; set; }
         public int BombQuantityAround { get; set; }
         public bool IsBomb { get; set; }
-
-        private bool _isChecked;
-        public bool IsChecked
-        {
-            get { return _isChecked; }
-            set
-            {
-                if (_isChecked != value)
-                {
-                    _isChecked = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
 
         private string _title;
         public string Title
@@ -43,63 +23,44 @@ namespace Minesweeper_Gublin
             }
         }
 
-        private bool _isMarked;
-        public bool IsMarked
+        private CellStates _state;
+        public CellStates State
         {
-            get { return _isMarked; }
+            get { return _state; }
             set
             {
-                if (_isMarked != value)
+                if (_state != value)
                 {
-                    _isMarked = value;
+                    _state = value;
                     RaisePropertyChanged();
                 }
             }
         }
 
-        private SolidColorBrush _backgroundColor;
-        public SolidColorBrush BackgroundColor
-        {
-            get { return _backgroundColor; }
-            set
-            {
-                if (_backgroundColor != value)
-                {
-                    _backgroundColor = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
 
         public Cell(int x, int y)
         {
             X = x;
             Y = y;
-            /*BackgroundColor = new SolidColorBrush(Colors.Green);*/
-            IsChecked = false;
+            State = CellStates.CLOSE;
         }
 
         public void MarkCell()
         {
-            if (!IsChecked)
-                if (!IsMarked)
-                    IsMarked = true;
-                else IsMarked = false;
+            if (State == CellStates.CLOSE ) State = CellStates.MARKED;
+            else if (State == CellStates.MARKED) State = CellStates.CLOSE;
         }
 
         public void Open()
         {
-            IsChecked = true;
-            if (IsBomb)
-            {
-                /*BackgroundColor = new SolidColorBrush(Colors.Red);*/
-                Title = "Ж";
-            }
-            else
-            {
-                /*BackgroundColor = new SolidColorBrush(Colors.DarkKhaki);*/
-                Title = BombQuantityAround == 0 ? "" : BombQuantityAround.ToString();
-            }
+            if (State == CellStates.CLOSE || State == CellStates.MARKED)
+                if (IsBomb)
+                    State = CellStates.OPEN_BOMB;
+                else
+                {
+                    Title = BombQuantityAround == 0 ? "" : BombQuantityAround.ToString();
+                    State = CellStates.OPEN_CLEAR;
+                }
         }
 
 
