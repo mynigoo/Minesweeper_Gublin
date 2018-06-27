@@ -7,14 +7,14 @@
         xmlns:local="clr-namespace:Minesweeper_Gublin"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" ResizeMode="CanResizeWithGrip" SizeToContent="WidthAndHeight" ScrollViewer.CanContentScroll="True">
+        Title="MainWindow" Height="350" Width="525" ResizeMode="NoResize" SizeToContent="WidthAndHeight" ScrollViewer.CanContentScroll="True">
     <Window.Resources>
         <local:Minefield x:Key="myMinefield" />
     </Window.Resources>
     <Grid x:Name="MainGrid"
           Background="#FFAFBCEA"
           DataContext="{StaticResource myMinefield}">
-        <ItemsControl x:Name="itemsControl" ItemsSource="{Binding Cells}">
+        <ItemsControl x:Name="itemsControl" ItemsSource="{Binding Cells}" Background="DarkKhaki">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid x:Name="mainUniformGrid" />
@@ -28,11 +28,14 @@
                                 <Setter Property="Control.Background"  Value="Green" />
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding IsMarked}" Value="true">
-                                        <Setter Property="Control.Background"  Value="Yellow" />
-                                        <Setter Property="Control.UseLayoutRounding"  Value="Yellow" />
+                                        <Setter Property="Control.Background">
+                                            <Setter.Value>
+                                                <ImageBrush ImageSource="/Images/no-entry.png"/>
+                                            </Setter.Value>
+                                        </Setter>
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding IsChecked}" Value="true">
-                                        <Setter Property="Control.Background"  Value="Khaki" />
+                                        <Setter Property="Control.Background" Value="DarkKhaki" />
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
