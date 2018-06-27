@@ -22,7 +22,22 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate >
                 <DataTemplate>
-                    <Button Margin="0,0,0,0" Height="25" Width="25" Content="{Binding Title}" Background="{Binding BackgroundColor}" Click="Button_Click" MouseRightButtonUp="Button_MouseRightButtonUp"   />
+                    <Button Margin="0,0,0,0" Height="25" Width="25" Content="{Binding Title}" Click="Button_Click" MouseRightButtonUp="Button_MouseRightButtonUp"  >
+                        <Button.Style>
+                            <Style>
+                                <Setter Property="Control.Background"  Value="Green" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsMarked}" Value="true">
+                                        <Setter Property="Control.Background"  Value="Yellow" />
+                                        <Setter Property="Control.UseLayoutRounding"  Value="Yellow" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsChecked}" Value="true">
+                                        <Setter Property="Control.Background"  Value="Khaki" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
