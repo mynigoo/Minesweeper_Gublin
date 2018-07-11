@@ -10,13 +10,16 @@ namespace Minesweeper_Gublin.ViewModel
         public int NumRows { get; set; }
         public int NumBombs { get; set; }
 
+        public int CountOpenCells { get; set; }
+
         public Cell[] Cells { get; set; }
 
         public Minefield()
         {
-            NumCols = 9;
-            NumRows = 9;
-            NumBombs = 10;
+            NumCols = 10;
+            NumRows = 10;
+            NumBombs = 12;
+            CountOpenCells = 0;
             Cells = new Cell[NumCols * NumRows];
             for (int j = 0; j < NumRows; j++)
                 for (int i = 0; i < NumCols; i++)
@@ -47,28 +50,28 @@ namespace Minesweeper_Gublin.ViewModel
             List<int> r = new List<int>();
 
             //1
-            if (y - 1 >= 0 & y - 1 < NumRows  &  x - 1 >= 0 & x - 1 < NumRows)
+            if (y - 1 >= 0 & y - 1 < NumCols  &  x - 1 >= 0 & x - 1 < NumRows)
                        r.Add((y - 1) * NumCols + x - 1 );
             //2
-            if (y - 0 >= 0 & y - 0 < NumRows  &  x - 1 >= 0 & x - 1 < NumRows)
+            if (y - 0 >= 0 & y - 0 < NumCols &  x - 1 >= 0 & x - 1 < NumRows)
                        r.Add((y - 0) * NumCols + x - 1);
             //3
-            if (y + 1 >= 0 & y + 1 < NumRows  &  x - 1 >= 0 & x - 1 < NumRows)
+            if (y + 1 >= 0 & y + 1 < NumCols &  x - 1 >= 0 & x - 1 < NumRows)
                        r.Add((y + 1) * NumCols + x - 1);
             //4
-            if (y - 1 >= 0 & y - 1 < NumRows  &  x - 0 >= 0 & x - 0 < NumRows)
+            if (y - 1 >= 0 & y - 1 < NumCols &  x - 0 >= 0 & x - 0 < NumRows)
                        r.Add((y - 1) * NumCols + x - 0);
             //5
-            if (y + 1 >= 0 & y + 1 < NumRows  &  x - 0 >= 0 & x - 0 < NumRows)
+            if (y + 1 >= 0 & y + 1 < NumCols &  x - 0 >= 0 & x - 0 < NumRows)
                        r.Add((y + 1) * NumCols + x - 0);
             //6
-            if (y - 1 >= 0 & y - 1 < NumRows  &  x + 1 >= 0 & x + 1 < NumRows)
+            if (y - 1 >= 0 & y - 1 < NumCols &  x + 1 >= 0 & x + 1 < NumRows)
                        r.Add((y - 1) * NumCols + x + 1);
             //7
-            if (y - 0 >= 0 & y - 0 < NumRows  &  x + 1 >= 0 & x + 1 < NumRows)
+            if (y - 0 >= 0 & y - 0 < NumCols &  x + 1 >= 0 & x + 1 < NumRows)
                        r.Add((y - 0) * NumCols + x + 1);
             //8
-            if (y + 1 >= 0 & y + 1 < NumRows  &  x + 1 >= 0 & x + 1 < NumRows)
+            if (y + 1 >= 0 & y + 1 < NumCols &  x + 1 >= 0 & x + 1 < NumRows)
                        r.Add((y + 1) * NumCols + x + 1);
 
             return r;
@@ -80,17 +83,23 @@ namespace Minesweeper_Gublin.ViewModel
             if (c.BombQuantityAround == 0)
                 foreach (var i in VicinityIndexes(c.X, c.Y))
                     if (Cells[i].State == CellStates.CLOSE)
-                    {
-                        Cells[i].Open();
                         CellCheck(Cells[i]);
-                    }
+            if (c.State == CellStates.OPEN_BOMB)
+                GameOver();
+            CountOpenCells++;
+            if (CountOpenCells == NumCols * NumRows - NumBombs)
+                YouWin();
         }
 
- 
-         
+        private void YouWin()
+        {
+            throw new NotImplementedException();
+        }
 
-
-
+        private void GameOver()
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

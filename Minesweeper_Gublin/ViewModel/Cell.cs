@@ -12,7 +12,7 @@ namespace Minesweeper_Gublin.ViewModel
         private string _title;
         public string Title
         {
-            get { return _title; } 
+            get { return _title; }
             set
             {
                 if (_title != value)
@@ -47,13 +47,14 @@ namespace Minesweeper_Gublin.ViewModel
 
         public void MarkCell()
         {
-            if (State == CellStates.CLOSE ) State = CellStates.MARKED;
+            if (State == CellStates.CLOSE) State = CellStates.MARKED;
             else if (State == CellStates.MARKED) State = CellStates.CLOSE;
         }
 
         public void Open()
         {
             if (State == CellStates.CLOSE || State == CellStates.MARKED)
+            {
                 if (IsBomb)
                     State = CellStates.OPEN_BOMB;
                 else
@@ -61,9 +62,8 @@ namespace Minesweeper_Gublin.ViewModel
                     Title = BombQuantityAround == 0 ? "" : BombQuantityAround.ToString();
                     State = CellStates.OPEN_CLEAR;
                 }
+            }
         }
-
-
 
     }
 }

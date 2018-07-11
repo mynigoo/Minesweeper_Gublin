@@ -14,7 +14,6 @@ namespace Minesweeper_Gublin
         public MainWindow()
         {
             InitializeComponent();
-            var myMinefield = new Minefield();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
