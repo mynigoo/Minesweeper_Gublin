@@ -17,7 +17,7 @@
         <ItemsControl x:Name="itemsControl" ItemsSource="{Binding Cells}" Background="DarkGreen">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid x:Name="mainUniformGrid" />
+                    <UniformGrid x:Name="mainUniformGrid" Columns="{Binding NumCols}" Rows="{Binding NumRows}"  />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate >

@@ -16,9 +16,9 @@ namespace Minesweeper_Gublin.ViewModel
 
         public Minefield()
         {
-            NumCols = 10;
-            NumRows = 10;
-            NumBombs = 12;
+            NumCols = 40;
+            NumRows = 20;
+            NumBombs = 101;
             CountOpenCells = 0;
             Cells = new Cell[NumCols * NumRows];
             for (int j = 0; j < NumRows; j++)
@@ -50,28 +50,28 @@ namespace Minesweeper_Gublin.ViewModel
             List<int> r = new List<int>();
 
             //1
-            if (y - 1 >= 0 & y - 1 < NumCols  &  x - 1 >= 0 & x - 1 < NumRows)
+            if (y - 1 >= 0 & y - 1 < NumRows &  x - 1 >= 0 & x - 1 < NumCols)
                        r.Add((y - 1) * NumCols + x - 1 );
             //2
-            if (y - 0 >= 0 & y - 0 < NumCols &  x - 1 >= 0 & x - 1 < NumRows)
+            if (y - 0 >= 0 & y - 0 < NumRows &  x - 1 >= 0 & x - 1 < NumCols)
                        r.Add((y - 0) * NumCols + x - 1);
             //3
-            if (y + 1 >= 0 & y + 1 < NumCols &  x - 1 >= 0 & x - 1 < NumRows)
+            if (y + 1 >= 0 & y + 1 < NumRows &  x - 1 >= 0 & x - 1 < NumCols)
                        r.Add((y + 1) * NumCols + x - 1);
             //4
-            if (y - 1 >= 0 & y - 1 < NumCols &  x - 0 >= 0 & x - 0 < NumRows)
+            if (y - 1 >= 0 & y - 1 < NumRows &  x - 0 >= 0 & x - 0 < NumCols)
                        r.Add((y - 1) * NumCols + x - 0);
             //5
-            if (y + 1 >= 0 & y + 1 < NumCols &  x - 0 >= 0 & x - 0 < NumRows)
+            if (y + 1 >= 0 & y + 1 < NumRows &  x - 0 >= 0 & x - 0 < NumCols)
                        r.Add((y + 1) * NumCols + x - 0);
             //6
-            if (y - 1 >= 0 & y - 1 < NumCols &  x + 1 >= 0 & x + 1 < NumRows)
+            if (y - 1 >= 0 & y - 1 < NumRows &  x + 1 >= 0 & x + 1 < NumCols)
                        r.Add((y - 1) * NumCols + x + 1);
             //7
-            if (y - 0 >= 0 & y - 0 < NumCols &  x + 1 >= 0 & x + 1 < NumRows)
+            if (y - 0 >= 0 & y - 0 < NumRows &  x + 1 >= 0 & x + 1 < NumCols)
                        r.Add((y - 0) * NumCols + x + 1);
             //8
-            if (y + 1 >= 0 & y + 1 < NumCols &  x + 1 >= 0 & x + 1 < NumRows)
+            if (y + 1 >= 0 & y + 1 < NumRows &  x + 1 >= 0 & x + 1 < NumCols)
                        r.Add((y + 1) * NumCols + x + 1);
 
             return r;
