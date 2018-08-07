@@ -1,14 +1,30 @@
-﻿using System;
+﻿using Minesweeper_Gublin.Helpers;
+using System;
 using System.Collections.Generic;
 
 namespace Minesweeper_Gublin.ViewModel
 {
-    public class Minefield
+    public class Minefield: ObservableObject
     {
 
         public int NumCols { get; set; }
         public int NumRows { get; set; }
         public int NumBombs { get; set; }
+
+        private bool _stopGame { get; set; }
+
+        public bool StopGame
+        {
+            get { return _stopGame; }
+            set
+            {
+                if (_stopGame != value)
+                {
+                    _stopGame = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
 
         public int CountOpenCells { get; set; }
 
@@ -20,11 +36,8 @@ namespace Minesweeper_Gublin.ViewModel
             NumRows = 9;
             NumBombs = 10;
             CountOpenCells = 0;
-            Cells = new Cell[NumCols * NumRows];
-            for (int j = 0; j < NumRows; j++)
-                for (int i = 0; i < NumCols; i++)
-                    Cells[NumCols * j + i] = new Cell(i, j);
-            Mining();
+            StopGame = false;
+            CellFilling();
         }
 
         private void Mining()
@@ -37,14 +50,23 @@ namespace Minesweeper_Gublin.ViewModel
                 if (Cells[NumCols * y + x].IsBomb != true)
                 {
                     Cells[NumCols * y + x].IsBomb = true;
-                    foreach (var cellIndex in VicinityIndexes(x, y))
+                    foreach (var cellIndex in GetIndexesAround(x, y))
                         Cells[cellIndex].BombQuantityAround++;
                 }
                 else i--;
             }
         }
 
-        private List<int> VicinityIndexes(int x, int y)
+        private void CellFilling()
+        {
+            Cells = new Cell[NumCols * NumRows];
+            for (int j = 0; j < NumRows; j++)
+                for (int i = 0; i < NumCols; i++)
+                    Cells[NumCols * j + i] = new Cell(i, j);
+            Mining();
+        }
+
+        private List<int> GetIndexesAround(int x, int y)
         {
             List<int> r = new List<int>();
 
@@ -80,11 +102,11 @@ namespace Minesweeper_Gublin.ViewModel
         {
             c.Open();
             if (c.BombQuantityAround == 0)
-                foreach (var i in VicinityIndexes(c.X, c.Y))
+                foreach (var i in GetIndexesAround(c.X, c.Y))
                     if (Cells[i].State == CellStates.CLOSE)
                         CellCheck(Cells[i]);
             if (c.State == CellStates.OPEN_BOMB)
-                GameOver();
+                YouLose();
             CountOpenCells++;
             if (CountOpenCells == NumCols * NumRows - NumBombs)
                 YouWin();
@@ -92,12 +114,14 @@ namespace Minesweeper_Gublin.ViewModel
 
         private void YouWin()
         {
-            throw new NotImplementedException();
+            StopGame = true;
+            CellFilling();
         }
 
-        private void GameOver()
+        private void YouLose()
         {
-            throw new NotImplementedException();
+            StopGame = true;
+            CellFilling();
         }
     }
 

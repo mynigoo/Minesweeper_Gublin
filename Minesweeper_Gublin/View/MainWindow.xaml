@@ -6,6 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Minesweeper_Gublin.ViewModel"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:v="clr-namespace:Minesweeper_Gublin.View"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525" ResizeMode="NoResize" SizeToContent="WidthAndHeight" ScrollViewer.CanContentScroll="True">
     <Window.Resources>
@@ -50,5 +51,20 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
+
+        <v:GameSettings>
+            <v:GameSettings.Style>
+                <Style TargetType="{x:Type v:GameSettings}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding StopGame}" Value="False">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding StopGame}" Value="True">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </v:GameSettings.Style>
+        </v:GameSettings>
     </Grid>
 </Window>
