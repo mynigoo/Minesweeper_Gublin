@@ -12,8 +12,7 @@
         <local:Minefield x:Key="myMinefield" />
     </Window.Resources>
     <Grid x:Name="MainGrid"
-          Background="#FFAFBCEA"
-          DataContext="{StaticResource myMinefield}">
+           DataContext="{StaticResource myMinefield}">
         <ItemsControl x:Name="itemsControl" ItemsSource="{Binding Cells}" Background="DarkGreen">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -22,11 +21,11 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate >
                 <DataTemplate>
-                    <Button Margin="0,0,0,0" Height="25" Width="25" Content="{Binding Title}" Click="Button_Click" MouseRightButtonUp="Button_MouseRightButtonUp"  >
-                        <Button.Style>
+                    <UserControl Margin="0,0,0,0" Height="25" Width="25" Content="{Binding Title}"  MouseRightButtonUp="Button_MouseRightButtonUp" BorderBrush="White" BorderThickness="0.25" MouseLeftButtonUp="UserControl_MouseLeftButtonUp"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"   >
+                        <UserControl.Style>
                             <Style>
                                 <Setter Property="Control.Background"  Value="DarkGreen" />
-                                <Style.Triggers>
+                                   <Style.Triggers>
                                     <DataTrigger Binding="{Binding State}" Value="MARKED">
                                         <Setter Property="Control.Background">
                                             <Setter.Value>
@@ -46,8 +45,8 @@
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
-                        </Button.Style>
-                    </Button>
+                        </UserControl.Style>
+                    </UserControl>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

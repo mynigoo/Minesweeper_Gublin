@@ -16,15 +16,14 @@ namespace Minesweeper_Gublin.ViewModel
 
         public Minefield()
         {
-            NumCols = 40;
-            NumRows = 20;
-            NumBombs = 101;
+            NumCols = 9;
+            NumRows = 9;
+            NumBombs = 10;
             CountOpenCells = 0;
             Cells = new Cell[NumCols * NumRows];
             for (int j = 0; j < NumRows; j++)
                 for (int i = 0; i < NumCols; i++)
                     Cells[NumCols * j + i] = new Cell(i, j);
-
             Mining();
         }
 
@@ -51,7 +50,7 @@ namespace Minesweeper_Gublin.ViewModel
 
             //1
             if (y - 1 >= 0 & y - 1 < NumRows &  x - 1 >= 0 & x - 1 < NumCols)
-                       r.Add((y - 1) * NumCols + x - 1 );
+                       r.Add((y - 1) * NumCols + x - 1);
             //2
             if (y - 0 >= 0 & y - 0 < NumRows &  x - 1 >= 0 & x - 1 < NumCols)
                        r.Add((y - 0) * NumCols + x - 1);

@@ -26,8 +26,15 @@ namespace Minesweeper_Gublin
 
         private void Button_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
         {
-            ((Cell)((Button)sender).DataContext).MarkCell();
+            ((Cell)((UserControl)sender).DataContext).MarkCell();
         }
 
+        private void UserControl_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            ((Minefield)this.MainGrid.DataContext)
+               .CellCheck(
+               (Cell)((UserControl)sender).DataContext
+               );
+        }
     }
 }
