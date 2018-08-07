@@ -32,9 +32,9 @@ namespace Minesweeper_Gublin.ViewModel
 
         public Minefield()
         {
-            NumCols = 9;
-            NumRows = 9;
-            NumBombs = 10;
+            NumCols = 20;
+            NumRows = 10;
+            NumBombs = 21;
             CountOpenCells = 0;
             StopGame = false;
             CellFilling();
