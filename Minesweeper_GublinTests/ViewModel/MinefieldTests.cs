@@ -12,7 +12,7 @@ namespace Minesweeper_Gublin.ViewModel.Tests
     public class MinefieldTests
     {
 
-/*
+
         [TestMethod()]
         public void GetIndexesAroundTest00()
         {
@@ -23,30 +23,30 @@ namespace Minesweeper_Gublin.ViewModel.Tests
             actual.Sort();
             CollectionAssert.AreEqual(expected, actual);
         }
+        /*
+                  [TestMethod()]
+                  public void GetIndexesAroundTest01()
+                  {
+                      PrivateObject privateHelperObject = new PrivateObject(new Minefield(3, 3, 0));
+                      List<int> expected = (new List<int> { 0, 1, 4, 6, 7 });
+                      expected.Sort();
+                      List<int> actual = (List<int>)privateHelperObject.Invoke("GetIndexesAround", 0, 1);
+                      actual.Sort();
+                      CollectionAssert.AreEqual(expected, actual);
+                  }
 
-        [TestMethod()]
-        public void GetIndexesAroundTest01()
-        {
-            PrivateObject privateHelperObject = new PrivateObject(new Minefield(3, 3, 0));
-            List<int> expected = (new List<int> { 0, 1, 4, 6, 7 });
-            expected.Sort();
-            List<int> actual = (List<int>)privateHelperObject.Invoke("GetIndexesAround", 0, 1);
-            actual.Sort();
-            CollectionAssert.AreEqual(expected, actual);
-        }
 
-*/
-        [TestMethod()]
-        public void GetIndexesAroundTest02()
-        {
-            PrivateObject privateHelperObject = new PrivateObject(new Minefield(3, 3, 0));
-            List<int> expected = (new List<int> { 3, 4, 7 });
-            expected.Sort();
-            List<int> actual = (List<int>)privateHelperObject.Invoke("GetIndexesAround", 0, 2);
-            actual.Sort();
-            CollectionAssert.AreEqual(expected, actual);
-        }
-
+                  [TestMethod()]
+                  public void GetIndexesAroundTest02()
+                  {
+                      PrivateObject privateHelperObject = new PrivateObject(new Minefield(3, 3, 0));
+                      List<int> expected = (new List<int> { 3, 4, 7 });
+                      expected.Sort();
+                      List<int> actual = (List<int>)privateHelperObject.Invoke("GetIndexesAround", 0, 2);
+                      actual.Sort();
+                      CollectionAssert.AreEqual(expected, actual);
+                  }
+          */
         [TestMethod()]
         public void GetIndexesAroundTest10()
         {

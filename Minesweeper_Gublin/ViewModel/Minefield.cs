@@ -7,9 +7,9 @@ namespace Minesweeper_Gublin.ViewModel
     public class Minefield: ObservableObject
     {
 
-        public int NumCols { get; set; }
-        public int NumRows { get; set; }
-        public int NumBombs { get; set; }
+        private int NumCols { get; set; }
+        private int NumRows { get; set; }
+        private int NumBombs { get; set; }
 
         private bool _theEnd;
 
@@ -26,7 +26,7 @@ namespace Minesweeper_Gublin.ViewModel
             }
         }
 
-        public int CountOpenCells { get; set; }
+        private int CountOpenCells { get; set; }
 
         private Cell[] _cells;
 
@@ -51,6 +51,16 @@ namespace Minesweeper_Gublin.ViewModel
             CountOpenCells = 0;
             TheEnd = false;
             CellFilling();
+            Mining();
+        }
+
+        private void CellFilling()
+        {
+            Cells = new Cell[NumCols * NumRows];
+            for (int j = 0; j < NumRows; j++)
+                for (int i = 0; i < NumCols; i++)
+                    Cells[NumCols * j + i] = new Cell(i, j);
+
         }
 
         private void Mining()
@@ -68,15 +78,6 @@ namespace Minesweeper_Gublin.ViewModel
                 }
                 else i--;
             }
-        }
-
-        private void CellFilling()
-        {
-            Cells = new Cell[NumCols * NumRows];
-            for (int j = 0; j < NumRows; j++)
-                for (int i = 0; i < NumCols; i++)
-                    Cells[NumCols * j + i] = new Cell(i, j);
-            Mining();
         }
 
         private List<int> GetIndexesAround(int x, int y)
@@ -119,22 +120,12 @@ namespace Minesweeper_Gublin.ViewModel
                     if (Cells[i].State == CellStates.CLOSE)
                         CellCheck(Cells[i]);
             if (c.State == CellStates.OPEN_BOMB)
-                YouLose();
+                TheEnd = true;
             CountOpenCells++;
             if (CountOpenCells == NumCols * NumRows - NumBombs)
-                YouWin();
+                TheEnd = true;
         }
 
-        private void YouWin()
-        {
-            TheEnd = true;
- 
-        }
-
-        private void YouLose()
-        {
-            TheEnd = true;
-         }
     }
 
 }
