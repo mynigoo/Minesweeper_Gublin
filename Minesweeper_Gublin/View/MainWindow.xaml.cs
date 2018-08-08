@@ -31,11 +31,10 @@ namespace Minesweeper_Gublin
 
         private void UserControl_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            ((GameSuperviser)this.DataContext)
-               .MainMinefield
-               .CellCheck(
-               (Cell)((UserControl)sender).DataContext
-               );
+            ((GameSuperviser)(gameSuperviser.DataContext)).MainMinefield.CellCheck(
+                (Cell)((UserControl)sender).DataContext
+                );
+
         }
     }
 }

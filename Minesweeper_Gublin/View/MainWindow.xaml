@@ -13,10 +13,10 @@
         <local:GameSuperviser/>
     </Window.DataContext>
     <Grid x:Name="MainGrid">
-        <ItemsControl x:Name="itemsControl" ItemsSource="{Binding DataContext.MainMinefield.Cells, ElementName=gameSuperviser}" DataContext="{Binding /}" Background="DarkGreen">
+        <ItemsControl x:Name="itemsControl" ItemsSource="{Binding DataContext.MainMinefield.Cells, ElementName=gameSuperviser}" Background="DarkGreen">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid x:Name="mainUniformGrid" Columns="{Binding MainMinefield.NumCols}" Rows="{Binding MainMinefield.NumRows}"  >
+                    <UniformGrid x:Name="mainUniformGrid" Columns="{Binding DataContext.NumCols, ElementName=gameSuperviser}" Rows="{Binding DataContext.NumRows, ElementName=gameSuperviser}"  >
                         <UniformGrid.DataContext>
                             <local:GameSuperviser/>
                         </UniformGrid.DataContext>
@@ -60,7 +60,7 @@
                 <Style TargetType="{x:Type v:GameSuperviser}">
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding DataContext.Stopp, ElementName=gameSuperviser}" Value="True">
-                            <Setter Property="Visibility" Value="Visible"/>
+                                     <Setter Property="Visibility" Value="Visible"/>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding DataContext.Stopp, ElementName=gameSuperviser}" Value="False">
                             <Setter Property="Visibility" Value="Collapsed"/>

@@ -23,8 +23,39 @@ namespace Minesweeper_Gublin.ViewModel
             }
         }
 
-        public int NumCols { get; set; }
-        public int NumRows { get; set; }
+
+
+        private int _numCols;
+
+        public int NumCols
+        {
+            get { return _numCols; }
+            set
+            {
+                if (_numCols != value)
+                {
+                    _numCols = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+
+        private int _numRows;
+
+        public int NumRows
+        {
+            get
+            { return _numRows; }
+            set
+            {
+                    if (_numRows != value)
+                    {
+                        _numRows = value;
+                        RaisePropertyChanged();
+                    }
+                }
+            }
         public int NumBombs { get; set; }
 
         private bool _stopp;
@@ -49,7 +80,10 @@ namespace Minesweeper_Gublin.ViewModel
 
         public void CreateMinefield()
         {
-            MainMinefield = new Minefield(9, 9, 10);
+            NumCols = 20;
+            NumRows = 2;
+            NumBombs = 5;
+            MainMinefield = new Minefield(NumCols, NumRows, NumBombs);
             Stopp = false;
 
         }
