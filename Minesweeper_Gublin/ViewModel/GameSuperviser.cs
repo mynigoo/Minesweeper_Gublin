@@ -80,9 +80,9 @@ namespace Minesweeper_Gublin.ViewModel
 
         public void CreateMinefield()
         {
-            NumCols = 20;
-            NumRows = 2;
-            NumBombs = 5;
+            NumCols = 9;
+            NumRows = 9;
+            NumBombs = 10;
             MainMinefield = new Minefield(NumCols, NumRows, NumBombs);
             Stopp = false;
 

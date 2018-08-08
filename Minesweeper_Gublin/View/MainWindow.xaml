@@ -59,10 +59,10 @@
             <v:GameSuperviser.Style>
                 <Style TargetType="{x:Type v:GameSuperviser}">
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding DataContext.Stopp, ElementName=gameSuperviser}" Value="True">
+                        <DataTrigger Binding="{Binding DataContext.MainMinefield.TheEnd, ElementName=gameSuperviser}" Value="True">
                                      <Setter Property="Visibility" Value="Visible"/>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding DataContext.Stopp, ElementName=gameSuperviser}" Value="False">
+                        <DataTrigger Binding="{Binding DataContext.MainMinefield.TheEnd, ElementName=gameSuperviser}" Value="False">
                             <Setter Property="Visibility" Value="Collapsed"/>
                         </DataTrigger>
                     </Style.Triggers>

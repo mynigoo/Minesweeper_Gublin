@@ -11,16 +11,16 @@ namespace Minesweeper_Gublin.ViewModel
         public int NumRows { get; set; }
         public int NumBombs { get; set; }
 
-        private bool _stopGame;
+        private bool _theEnd;
 
-        public bool StopGame
+        public bool TheEnd
         {
-            get { return _stopGame; }
+            get { return _theEnd; }
             set
             {
-                if (_stopGame != value)
+                if (_theEnd != value)
                 {
-                    _stopGame = value;
+                    _theEnd = value;
                     RaisePropertyChanged();
                 }
             }
@@ -49,7 +49,7 @@ namespace Minesweeper_Gublin.ViewModel
             NumRows = NumRowsI;
             NumBombs = NumBombsI;
             CountOpenCells = 0;
-            StopGame = false;
+            TheEnd = false;
             CellFilling();
         }
 
@@ -127,15 +127,14 @@ namespace Minesweeper_Gublin.ViewModel
 
         private void YouWin()
         {
-            StopGame = true;
-            CellFilling();
+            TheEnd = true;
+ 
         }
 
         private void YouLose()
         {
-            StopGame = true;
-            CellFilling();
-        }
+            TheEnd = true;
+         }
     }
 
 }
