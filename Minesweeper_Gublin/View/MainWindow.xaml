@@ -9,15 +9,11 @@
         xmlns:v="clr-namespace:Minesweeper_Gublin.View"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525" ResizeMode="NoResize" SizeToContent="WidthAndHeight" ScrollViewer.CanContentScroll="True">
-    <Window.Resources>
-        <local:GameSuperviser x:Key="GameSuperviser" />
-    </Window.Resources>
     <Window.DataContext>
         <local:GameSuperviser/>
     </Window.DataContext>
-    <Grid x:Name="MainGrid"
-           DataContext="{Binding MainMinefield, Source={StaticResource GameSuperviser}}">
-        <ItemsControl x:Name="itemsControl" ItemsSource="{Binding DataContext.MainMinefield.Cells, ElementName=gameSuperviser}" Background="DarkGreen" DataContext="{Binding /}">
+    <Grid x:Name="MainGrid">
+        <ItemsControl x:Name="itemsControl" ItemsSource="{Binding DataContext.MainMinefield.Cells, ElementName=gameSuperviser}" DataContext="{Binding /}" Background="DarkGreen">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid x:Name="mainUniformGrid" Columns="{Binding MainMinefield.NumCols}" Rows="{Binding MainMinefield.NumRows}"  >
