@@ -49,7 +49,7 @@ namespace Minesweeper_Gublin.ViewModel
 
         public void CreateMinefield()
         {
-            //MainMinefield = new Minefield(9, 9, 10);
+            MainMinefield = new Minefield(9, 9, 10);
             Stopp = false;
 
         }
