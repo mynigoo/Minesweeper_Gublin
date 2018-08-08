@@ -11,7 +11,7 @@ namespace Minesweeper_Gublin.ViewModel
         public int NumRows { get; set; }
         public int NumBombs { get; set; }
 
-        private bool _stopGame { get; set; }
+        private bool _stopGame;
 
         public bool StopGame
         {
@@ -28,13 +28,26 @@ namespace Minesweeper_Gublin.ViewModel
 
         public int CountOpenCells { get; set; }
 
-        public Cell[] Cells { get; set; }
+        private Cell[] _cells;
 
-        public Minefield()
+        public Cell[] Cells
         {
-            NumCols = 20;
-            NumRows = 10;
-            NumBombs = 21;
+            get { return _cells; }
+            set
+            {
+                if (_cells != value)
+                {
+                    _cells = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        public Minefield(int NumColsI, int NumRowsI, int NumBombsI)
+        {
+            NumCols = NumColsI;
+            NumRows = NumRowsI;
+            NumBombs = NumBombsI;
             CountOpenCells = 0;
             StopGame = false;
             CellFilling();

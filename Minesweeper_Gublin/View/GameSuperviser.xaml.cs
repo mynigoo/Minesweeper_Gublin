@@ -18,11 +18,16 @@ namespace Minesweeper_Gublin.View
     /// <summary>
     /// Interaction logic for UserControl1.xaml
     /// </summary>
-    public partial class GameSettings : UserControl
+    public partial class GameSuperviser : UserControl
     {
-        public GameSettings()
+        public GameSuperviser()
         {
             InitializeComponent();
+        }
+
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            ((Minesweeper_Gublin.ViewModel.GameSuperviser)(this.DataContext)).CreateMinefield();
         }
     }
 }

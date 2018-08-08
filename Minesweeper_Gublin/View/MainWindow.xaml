@@ -10,11 +10,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525" ResizeMode="NoResize" SizeToContent="WidthAndHeight" ScrollViewer.CanContentScroll="True">
     <Window.Resources>
-        <local:Minefield x:Key="myMinefield" />
+        <local:GameSuperviser x:Key="GameSuperviser" />
     </Window.Resources>
     <Grid x:Name="MainGrid"
-           DataContext="{StaticResource myMinefield}">
-        <ItemsControl x:Name="itemsControl" ItemsSource="{Binding Cells}" Background="DarkGreen">
+           DataContext="{Binding MainMinefield.Cells, Source={StaticResource GameSuperviser}}">
+        <ItemsControl x:Name="itemsControl" ItemsSource="{Binding Cells}" Background="DarkGreen" DataContext="{Binding /}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid x:Name="mainUniformGrid" Columns="{Binding NumCols}" Rows="{Binding NumRows}"  />
@@ -26,7 +26,7 @@
                         <UserControl.Style>
                             <Style>
                                 <Setter Property="Control.Background"  Value="DarkGreen" />
-                                   <Style.Triggers>
+                                <Style.Triggers>
                                     <DataTrigger Binding="{Binding State}" Value="MARKED">
                                         <Setter Property="Control.Background">
                                             <Setter.Value>
@@ -52,19 +52,22 @@
             </ItemsControl.ItemTemplate>
         </ItemsControl>
 
-        <v:GameSettings>
-            <v:GameSettings.Style>
-                <Style TargetType="{x:Type v:GameSettings}">
+        <v:GameSuperviser x:Name="gameSuperviser">
+            <v:GameSuperviser.Style>
+                <Style TargetType="{x:Type v:GameSuperviser}">
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding StopGame}" Value="False">
+                        <DataTrigger Binding="{Binding DataContext.Stopp, ElementName=gameSuperviser}" Value="false">
                             <Setter Property="Visibility" Value="Collapsed" />
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding StopGame}" Value="True">
+                        <DataTrigger Binding="{Binding DataContext.Stopp, ElementName=gameSuperviser}" Value="false">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Stopp, Source={StaticResource GameSuperviser}}" Value="True">
                             <Setter Property="Visibility" Value="Visible" />
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
-            </v:GameSettings.Style>
-        </v:GameSettings>
+            </v:GameSuperviser.Style>
+        </v:GameSuperviser>
     </Grid>
 </Window>
