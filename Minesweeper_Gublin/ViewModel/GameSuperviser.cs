@@ -53,13 +53,27 @@ namespace Minesweeper.ViewModel
                 }
             }
         }
-        public int NumBombs { get; set; }
+
+        private int _numBombs;
+        public int NumBombs
+        {
+            get
+            { return _numBombs; }
+            set
+            {
+                if (_numBombs != value)
+                {
+                    _numBombs = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
 
         public void CreateMinefield()
-        {
+        {/*
             NumCols = 10;
             NumRows = 3;
-            NumBombs = 0;
+            NumBombs = 0;*/
             MainMinefield = new Minefield(NumCols, NumRows, NumBombs);
         }
     }

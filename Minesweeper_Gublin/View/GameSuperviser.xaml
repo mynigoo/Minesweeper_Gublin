@@ -18,7 +18,29 @@
         <!-- MAIN CONTENT AREA -->
         <DockPanel Margin="4" Background="WhiteSmoke" Opacity="0.75">
 
-            <!-- TITLE -->
+            <Grid DockPanel.Dock="Bottom" Width="auto">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="0" Grid.Row="0">Столбцы</Label>
+                <Label Grid.Column="0" Grid.Row="1">Строки</Label>
+                <Label Grid.Column="0" Grid.Row="2">Бомбы</Label>
+                <Label Grid.Column="1" Grid.Row="0" Content="{Binding NumCols}"/>
+                <Label Grid.Column="1" Grid.Row="1" Content="{Binding NumRows}"/>
+                <Label Grid.Column="1" Grid.Row="2" Content="{Binding NumBombs}"/>
+
+                <Slider Grid.Column="2" Grid.Row="0" x:Name="RowSlider" Minimum="9" Maximum="100" VerticalAlignment="Center" Width="200" Value="{Binding NumCols}"/>
+                <Slider Grid.Column="2" Grid.Row="1" x:Name="ColSlider" Minimum="9" Maximum="100" VerticalAlignment="Center" Width="200" Value="{Binding NumRows}"/>
+                <Slider Grid.Column="2" Grid.Row="2" x:Name="BombSlider" Minimum="9" Maximum="100" VerticalAlignment="Center" Width="200" Value="{Binding NumBombs}"/>
+            </Grid>
 
             <!-- PLAY AGAIN BUTTON -->
             <TextBlock Grid.Column="0"
@@ -26,8 +48,7 @@
                            Margin="0,20,0,20"
                            DockPanel.Dock="Bottom" >
                 <TextBlock.Resources>
-                    <Style x:Key="ButtonTextStyle" TargetType="{x:Type TextBlock}"/>
-                    <Style x:Key="PlayAgainButtonTextStyle" BasedOn="{StaticResource ButtonTextStyle}" TargetType="{x:Type TextBlock}">
+                    <Style x:Key="PlayAgainButtonTextStyle" TargetType="{x:Type TextBlock}">
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Foreground" Value="Green" />
@@ -47,19 +68,7 @@
                 </TextBlock>
 
 
-            <!-- BUTTON CONTAINER -->
-            <Grid DockPanel.Dock="Bottom" >
-                <Grid.Resources>
-                    
-                </Grid.Resources>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
 
-               
-
-            </Grid>
 
             <!-- WANT TO PLAY AGAIN? -->
             <TextBlock FontSize="18"
