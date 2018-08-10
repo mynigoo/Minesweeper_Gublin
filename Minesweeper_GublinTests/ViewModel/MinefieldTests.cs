@@ -1,12 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Minesweeper_Gublin.ViewModel;
+using Minesweeper.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Minesweeper_Gublin.ViewModel.Tests
+namespace Minesweeper.ViewModel.Tests
 {
     [TestClass()]
     public class MinefieldTests

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Minesweeper_Gublin.View
+namespace Minesweeper.View
 {
     /// <summary>
     /// Interaction logic for UserControl1.xaml
@@ -27,7 +27,7 @@ namespace Minesweeper_Gublin.View
 
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
         {
-            ((Minesweeper_Gublin.ViewModel.GameSuperviser)(this.DataContext)).CreateMinefield();
+            ((Minesweeper.ViewModel.GameSuperviser)(this.DataContext)).CreateMinefield();
         }
     }
 }

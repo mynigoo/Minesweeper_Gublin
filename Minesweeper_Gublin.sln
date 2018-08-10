@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minesweeper_Gublin", "Minesweeper_Gublin\Minesweeper_Gublin.csproj", "{511D007A-20DF-4A51-88B2-73C1EA43CB16}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minesweeper", "Minesweeper_Gublin\Minesweeper.csproj", "{511D007A-20DF-4A51-88B2-73C1EA43CB16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minesweeper_GublinTests", "Minesweeper_GublinTests\Minesweeper_GublinTests.csproj", "{954FC7F0-63C9-45BC-8934-DA771029B7B6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minesweeper_Tests", "Minesweeper_GublinTests\Minesweeper_Tests.csproj", "{954FC7F0-63C9-45BC-8934-DA771029B7B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

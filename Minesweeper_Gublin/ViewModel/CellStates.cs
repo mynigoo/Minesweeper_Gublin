@@ -1,4 +1,4 @@
-﻿namespace Minesweeper_Gublin.ViewModel
+﻿namespace Minesweeper.ViewModel
 {
     public enum CellStates
     {

@@ -55,9 +55,9 @@
     <Compile Include="ViewModel\MinefieldTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Minesweeper_Gublin\Minesweeper_Gublin.csproj">
+    <ProjectReference Include="..\Minesweeper_Gublin\Minesweeper.csproj">
       <Project>{511D007A-20DF-4A51-88B2-73C1EA43CB16}</Project>
-      <Name>Minesweeper_Gublin</Name>
+      <Name>Minesweeper</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

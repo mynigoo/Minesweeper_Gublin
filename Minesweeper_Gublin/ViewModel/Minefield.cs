@@ -1,8 +1,8 @@
-﻿using Minesweeper_Gublin.Helpers;
+﻿using Minesweeper.Helpers;
 using System;
 using System.Collections.Generic;
 
-namespace Minesweeper_Gublin.ViewModel
+namespace Minesweeper.ViewModel
 {
     public class Minefield: ObservableObject
     {

@@ -1,9 +1,9 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Minesweeper_Gublin.ViewModel;
+using Minesweeper.ViewModel;
 
-namespace Minesweeper_Gublin
+namespace Minesweeper
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

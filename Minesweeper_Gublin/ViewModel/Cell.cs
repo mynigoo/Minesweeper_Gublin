@@ -1,6 +1,6 @@
-﻿using Minesweeper_Gublin.Helpers;
+﻿using Minesweeper.Helpers;
 
-namespace Minesweeper_Gublin.ViewModel
+namespace Minesweeper.ViewModel
 {
     public class Cell : ObservableObject
     {
