@@ -16,20 +16,13 @@ namespace Minesweeper
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            ((Minefield)this.MainGrid.DataContext)
-                .CellCheck(
-                (Cell)((Button)sender).DataContext
-                );
-        }
 
-        private void Button_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        private void UserControl_MouseRightClick(object sender, MouseButtonEventArgs e)
         {
             ((Cell)((UserControl)sender).DataContext).MarkCell();
         }
 
-        private void UserControl_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void UserControl_MouseLeftClick(object sender, MouseButtonEventArgs e)
         {
             ((GameSuperviser)(gameSuperviser.DataContext)).MainMinefield.CellCheck(
                 (Cell)((UserControl)sender).DataContext

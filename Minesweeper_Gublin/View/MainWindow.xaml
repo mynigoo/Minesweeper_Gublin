@@ -16,7 +16,7 @@
         <ItemsControl x:Name="itemsControl" ItemsSource="{Binding DataContext.MainMinefield.Cells, ElementName=gameSuperviser}" Background="DarkGreen">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid x:Name="mainUniformGrid" Columns="{Binding DataContext.NumCols, ElementName=gameSuperviser}" Rows="{Binding DataContext.NumRows, ElementName=gameSuperviser}"  >
+                    <UniformGrid x:Name="mainUniformGrid" Columns="{Binding DataContext.MainMinefield.NumCols, ElementName=gameSuperviser}" Rows="{Binding DataContext.MainMinefield.NumRows, ElementName=gameSuperviser}"  >
                         <UniformGrid.DataContext>
                             <local:GameSuperviser/>
                         </UniformGrid.DataContext>
@@ -25,7 +25,7 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate >
                 <DataTemplate>
-                    <UserControl Margin="0,0,0,0" Height="25" Width="25" Content="{Binding Title}"  MouseRightButtonUp="Button_MouseRightButtonUp" BorderBrush="White" BorderThickness="0.25" MouseLeftButtonUp="UserControl_MouseLeftButtonUp"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"   >
+                    <UserControl Margin="0,0,0,0" Height="35" Width="35" Content="{Binding Title}"  MouseRightButtonUp="UserControl_MouseRightClick" BorderBrush="White" BorderThickness="0.25" MouseLeftButtonUp="UserControl_MouseLeftClick"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"   >
                         <UserControl.Style>
                             <Style>
                                 <Setter Property="Control.Background"  Value="DarkGreen" />

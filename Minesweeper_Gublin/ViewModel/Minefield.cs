@@ -7,8 +7,8 @@ namespace Minesweeper.ViewModel
     public class Minefield: ObservableObject
     {
 
-        private int NumCols { get; set; }
-        private int NumRows { get; set; }
+        public int NumCols { get; set; }
+        public int NumRows { get; set; }
         private int NumBombs { get; set; }
         private int CountOpenCells { get; set; }
 
