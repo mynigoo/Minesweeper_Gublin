@@ -57,7 +57,7 @@ namespace Minesweeper.ViewModel
 
         public void CreateMinefield()
         {
-            NumCols = 3;
+            NumCols = 10;
             NumRows = 3;
             NumBombs = 0;
             MainMinefield = new Minefield(NumCols, NumRows, NumBombs);

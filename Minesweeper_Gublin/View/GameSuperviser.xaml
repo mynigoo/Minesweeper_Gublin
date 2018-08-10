@@ -19,26 +19,13 @@
         <DockPanel Margin="4" Background="WhiteSmoke" Opacity="0.75">
 
             <!-- TITLE -->
-            <TextBlock DockPanel.Dock="Top"
-                       FontSize="24"
-                       FontWeight="Bold"
-                       Margin="10"
-                       Text="{Binding Title, Mode=OneTime}"
-                       TextAlignment="Center"
-                       TextDecorations="Underline"
-                       TextWrapping="Wrap" />
 
-            <!-- SUBTITLE -->
-            <TextBlock DockPanel.Dock="Top"
-                       FontSize="18"
-                       Margin="0,6,0,0"
-                       Text="{Binding Subtitle, Mode=OneTime}"
-                       TextAlignment="Center"
-                       TextWrapping="Wrap" />
-
-            <!-- BUTTON CONTAINER -->
-            <Grid DockPanel.Dock="Bottom" >
-                <Grid.Resources>
+            <!-- PLAY AGAIN BUTTON -->
+            <TextBlock Grid.Column="0"
+                           HorizontalAlignment="Center"
+                           Margin="0,20,0,20"
+                           DockPanel.Dock="Bottom" >
+                <TextBlock.Resources>
                     <Style x:Key="ButtonTextStyle" TargetType="{x:Type TextBlock}"/>
                     <Style x:Key="PlayAgainButtonTextStyle" BasedOn="{StaticResource ButtonTextStyle}" TargetType="{x:Type TextBlock}">
                         <Style.Triggers>
@@ -47,24 +34,7 @@
                             </Trigger>
                         </Style.Triggers>
                     </Style>
-                    <Style x:Key="EndGameButtonTextStyle" BasedOn="{StaticResource ButtonTextStyle}" TargetType="{x:Type TextBlock}">
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Foreground" Value="Red" />
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Grid.Resources>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-
-                <!-- PLAY AGAIN BUTTON -->
-                <TextBlock Grid.Column="0"
-                           HorizontalAlignment="Center"
-                           Margin="20,20,0,20"
-                           >
+                </TextBlock.Resources>
                     <Hyperlink FocusVisualStyle="{x:Null}"
                                TextDecorations="None"
                                Click="Hyperlink_Click">
@@ -76,14 +46,19 @@
                     </Hyperlink>
                 </TextBlock>
 
-                <!-- I'M DONE BUTTON -->
-                <TextBlock Grid.Column="1"
-                           HorizontalAlignment="Center"
-                           Margin="0,20" ><Hyperlink Command="{Binding QuitCommand, Mode=OneTime}"
-                               FocusVisualStyle="{x:Null}"
-                               TextDecorations="None" ><InlineUIContainer>
-                            <TextBlock Style="{StaticResource EndGameButtonTextStyle}" ><Run Text="ВЫХОД"/></TextBlock>
-                        </InlineUIContainer></Hyperlink></TextBlock>
+
+            <!-- BUTTON CONTAINER -->
+            <Grid DockPanel.Dock="Bottom" >
+                <Grid.Resources>
+                    
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+               
+
             </Grid>
 
             <!-- WANT TO PLAY AGAIN? -->
